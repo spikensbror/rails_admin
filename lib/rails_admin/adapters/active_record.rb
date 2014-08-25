@@ -13,12 +13,12 @@ module RailsAdmin
       end
 
       def get(id)
-        return unless object = model.unscoped.where(primary_key => id).first
+        return unless object = model.unscoped.all.where(primary_key => id).first
         AbstractObject.new object
       end
 
       def scoped
-        model.unscoped
+        model.unscoped.all
       end
 
       def first(options = {}, scope = nil)
