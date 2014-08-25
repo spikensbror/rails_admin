@@ -26,8 +26,7 @@ module RailsAdmin
     end
 
     def get_object
-      fail(RailsAdmin::ObjectNotFound) unless (object = @abstract_model.model.unscoped.find(params[:id]))
-      @object = RailsAdmin::Adapters::ActiveRecord::AbstractObject.new(object)
+      fail(RailsAdmin::ObjectNotFound) unless (@object = @abstract_model.get(params[:id]))
     end
 
     def to_model_name(param)
